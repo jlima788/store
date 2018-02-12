@@ -1,245 +1,205 @@
 <main class="ls-main ">
     <div class="container-fluid">
-<div class="groupData" id="buyerData">
-	
-	<h1>Dados do comprador</h1>
-	
-	<div class="field">
-		<label for="senderEmail">E-mail</label>
-		<input type="text" name="senderEmail" id="senderEmail" />
-	</div>
-	
-	<div class="field">
-		<label for="senderName">Nome completo</label>
-		<input type="text" name="senderName" id="senderName" holderField="name" />
-	</div>
-	
-	<div class="field">
-		<label for="senderCPF">CPF (somente números)</label>
-		<input type="text" name="senderCPF" id="senderCPF" holderField="cpf" maxlength="11" />
-	</div>
-	
-	<div class="field">
-		<label for="senderAreaCode">Telefone</label>
-		<input type="text" name="senderAreaCode" id="senderAreaCode" holderField="areaCode" class="areaCode" maxlength="2" />
-		<input type="text" name="senderPhone" id="senderPhone" holderField="phone" class="phone" maxlength="9" />
-	</div>
-	
-	<h2>Endere&ccedil;o de Residencial</h2>
-	
-	<div class="field">
-		<label for="shippingAddressPostalCode">CEP (somente números)</label>
-		<input type="text" name="shippingAddressPostalCode" id="shippingAddressPostalCode" holderField="postalCode" maxlength="8" />
-	</div>
-	
-	<div class="field">
-		<label for="shippingAddressStreet">Rua, Avenida, etc ...</label>
-		<input type="text" name="shippingAddressStreet" id="shippingAddressStreet" holderField="street" />
-	</div>
-	
-	<div class="field">
-		<label for="shippingAddressNumber">N&uacute;mero</label>
-		<input type="text" name="shippingAddressNumber" id="shippingAddressNumber" holderField="number" />
-	</div>
-	
-	<div class="field">
-		<label for="shippingAddressComplement">Complemento</label>
-		<input type="text" name="shippingAddressComplement" id="shippingAddressComplement" holderField="complement" />
-	</div>
-	
-	<div class="field">
-		<label for="shippingAddressDistrict">Bairro</label>
-		<input type="text" name="shippingAddressDistrict" id="shippingAddressDistrict" holderField="district" />
-	</div>
-	
-	<div class="field">
-		<label for="shippingAddressCity">Cidade</label>
-		<input type="text" name="shippingAddressCity" id="shippingAddressCity" holderField="city" />
-	</div>
-	
-	<div class="field">
-		<label for="shippingAddressState">Estado</label>
-		<input type="text" name="shippingAddressState" id="shippingAddressState" holderField="state" class="addressState" maxlength="2" />
-	</div>
-	
-	<div class="field">
-		<label for="shippingAddressCountry">Pa&iacute;s</label>
-		<input type="text" name="shippingAddressCountry" id="shippingAddressCountry" holderField="country" value="Brasil" />
-	</div>
-	
-</div>
+        <h1 class="ls-title-intro">Checkout Transparente</h1>
+   		<?php $itens_pedido = $this->Itens_Pedido->get(array("id_pedido"=>$data->id)); ?>
+		<section class="tabs-pagamentos">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div>
+					  <!-- Nav tabs -->
+					  <ul class="nav nav-tabs" role="tablist">
+					  	<li role="presentation" class="active">
+					  		<a href="#comprador" aria-controls="comprador" role="tab" data-toggle="tab">Dados Comprador</a>
+					  	</li>
+					    <!-- <li role="presentation">
+					    	<a href="#cartao" aria-controls="cartao" role="tab" data-toggle="tab">Cartão de Crédito</a>
+					    </li> -->
+					    <li role="presentation">
+					    	<a href="#boleto" aria-controls="boleto" role="tab" data-toggle="tab">Boleto Bancário</a>
+					    </li>
+					    <!-- <li role="presentation">
+					    	<a href="#debito" aria-controls="debito" role="tab" data-toggle="tab">Débito Online</a>
+					    </li> -->
+					  </ul>
 
-<div class="groupData" id="paymentMethods">
-	
-	<h1>Meios de Pagamento</h1>
-	
-	
-	<div id="paymentMethodsOptions">
-		
-		<div class="field radio">
-			<input id="creditCardRadio" type="radio" name="changePaymentMethod" value="creditCard" />
-			<label for="creditCardRadio">Cart&atilde;o de Cr&eacute;dito</label>
-		</div>
-		
-		<div class="field radio">
-			<input id="boletoRadio" type="radio" name="changePaymentMethod" value="boleto" />
-			<label for="boletoRadio">Boleto</label>
-		</div>
-		
-		<div class="field radio">
-			<input id="eftRadio" type="radio" name="changePaymentMethod" value="eft" />
-			<label for="eftRadio">D&eacute;bito</label>
-		</div>
-		
-		<div id="paymentMethodLoading">Aguarde...</div>
-		
-	</div>
-	
-	<div id="creditCardData" class="paymentMethodGroup" dataMethod="creditCard">
-		
-		<div id="cardData">
-			
-			<h2>Dados do Cart&atilde;o </h2>
-			
-			<div class="field" id="cardBrand">
-				<label for="cc_numero">N&uacute;mero</label>
-				<input type="text" name="cc_numero" id="cc_numero" class="cardDatainput" />
-			</div>
-			
-			<div class="field">
-				<label for="cardExpirationMonth">Data de Vencimento (99/9999)</label>
-				<input type="text" name="cardExpirationMonth" id="cardExpirationMonth" class="cardDatainput month" maxlength="2" /> /
-				<input type="text" name="cardExpirationYear" id="cardExpirationYear" class="cardDatainput year" maxlength="4" />
-			</div>
-			
-			<div class="field">
-				<label for="cardCvv">C&oacute;digo de Seguran&ccedil;a</label>
-				<input type="text" name="cardCvv" id="cardCvv" maxlength="5" class="cardDatainput" />
-			</div>
-			
-		</div>
-		
-		<div class="field" id="installmentsWrapper">
-			<label for="installmentQuantity">Parcelamento</label>
-			<select name="installmentQuantity" id="installmentQuantity"></select>
-			<input type="text" name="cc_parcelas" id="cc_parcelas" />
-		</div>
+					  <!-- Tab panes -->
+					  <div class="tab-content">
+				  	    <div role="tabpanel" class="tab-pane active" id="comprador">
 
-		<h2>Dados do Titular do Cart&atilde;o</h2>
-		
-		<div id="holderDataChoice">
-			
-			<div class="field radio">
-				<input type="radio" name="holderType" id="sameHolder" />
-				<label for="sameHolder"> mesmo que o comprador</label>
-			</div>
-			
-			<div class="field radio">
-				<input type="radio" name="holderType" id="otherHolder" />
-				<label for="otherHolder">outro</label>
-			</div>
-			
-		</div>
-		
-		<div class="field">
-			<label for="creditCardHolderBirthDate">Data de Nascimento (99/99/9999)</label>
-			<input type="text" name="creditCardHolderBirthDate" id="creditCardHolderBirthDate" maxlength="10" />
-		</div>
-		
-		<div id="holderData">
-			
-			<div class="field">
-				<label for="creditCardHolderName">Nome (Como est&aacute; impresso no cart&atilde;o)</label>
-				<input type="text" name="creditCardHolderName" id="creditCardHolderName" holderField="name" />
-			</div>
-			
-			<div class="field">
-				<label for="creditCardHolderCPF">CPF (somente n&uacute;meros)</label>
-				<input type="text" name="creditCardHolderCPF" id="creditCardHolderCPF" holderField="cpf" maxlength="11" />
-			</div>
-			
-			<div class="field">
-				<label for="creditCardHolderAreaCode">Telefone</label>
-				<input type="text" name="creditCardHolderAreaCode" id="creditCardHolderAreaCode" holderField="areaCode" class="areaCode" maxlength="2" />
-				<input type="text" name="creditCardHolderPhone" id="creditCardHolderPhone" holderField="phone" class="phone" maxlength="9" />
-			</div>
-			
-			<h2>Endere&ccedil;o de Cobran&ccedil;a</h2>
-			
-			<div class="field">
-				<label for="billingAddressPostalCode">CEP</label>
-				<input type="text" name="billingAddressPostalCode" id="billingAddressPostalCode" holderField="postalCode" />
-			</div>
-			
-			<div class="field">
-				<label for="billingAddressStreet">Rua, Avenida, etc ...</label>
-				<input type="text" name="billingAddressStreet" id="billingAddressStreet" holderField="street" />
-			</div>
-			
-			<div class="field">
-				<label for="billingAddressNumber">N&uacute;mero</label>
-				<input type="text" name="billingAddressNumber" id="billingAddressNumber" holderField="number" />
-			</div>
-			
-			<div class="field">
-				<label for="billingAddressComplement">Complemento</label>
-				<input type="text" name="billingAddressComplement" id="billingAddressComplement" holderField="complement" />
-			</div>
-			
-			<div class="field">
-				<label for="billingAddressDistrict">Bairro</label>
-				<input type="text" name="billingAddressDistrict" id="billingAddressDistrict" holderField="district" />
-			</div>
-			
-			<div class="field">
-				<label for="billingAddressCity">Cidade</label>
-				<input type="text" name="billingAddressCity" id="billingAddressCity" holderField="city" />
-			</div>
-			
-			<div class="field">
-				<label for="billingAddressState">Estado</label>
-				<input type="text" name="billingAddressState" id="billingAddressState"  maxlength="2" />
-			</div>
-				
-			<div class="field">
-				<label for="billingAddressCountry">Pa&iacute;s</label>
-				<input type="text" id="billingAddressCountry" holderField="country" />
-			</div>
+				  	    	<div class="row">
+				  	    		<div class="col-xs-12 col-sm-11 col-md-11 col-lg-11">
+				  	    			<h3>Dados do comprador</h3>
+				  			    	<p>
+				  			    		Preencha o formulário abaixo, com os dados do comprador.
+				  			    	</p>
+				  	    		</div>
+				  	    		<div class="col-xs-12 col-sm-1 col-md-1 col-lg-1">
+				  	    			<div class="cc_brand" id="show_brand"><!-- vai fica a bandeira do cartão --></div>
+				  	    		</div>
+				  	    	</div>	
 
-			<div class="field">
-				<label>Total Compra:</label>
-				<input type="text" class="itemId" id="total" value="0001" />
+				  	    	<div id="erros_cartao"><!-- aqui fica os erros --></div>
+				  	    	<div id="msg_cartao"><!-- msg cartão --></div>
+
+				  	    	<form action="" method="post" id="form_pagamento" name="form_pagamento">
+				  	    		<div class="row">
+				  	    			<div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+				  		    			<div class="form-group">
+				  		    				<label>E-mail</label>
+				  		    				<input type="text" id="senderEmail" class="form-control">
+				  		    			</div>
+				  		    		</div>
+				  		    		<div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+				  		    			<div class="form-group">
+				  		    				<label>Nome completo</label>
+				  		    				<input type="text" id="senderName" class="form-control">
+				  		    			</div>
+				  		    		</div>
+				  	    		</div>
+
+				  	    		<div class="row">
+				  	    			<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+				  		    			<div class="form-group">
+				  		    				<label>CPF (somente números)</label>
+				  		    				<input type="text" id="senderCPF" class="form-control">
+				  		    			</div>
+				  		    		</div>
+				  		    		<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+				  		    			<div class="form-group">
+				  		    				<label>Telefone</label>
+				  		    				<input type="text" id="senderPhone" class="form-control">
+				  		    			</div>
+				  		    		</div>
+				  	    		</div>
+				  	    		<input type="hidden" id="id_pedido" value="<?php echo $itens_pedido[0]->id_pedido ?>" >
+				  	    		<input type="hidden" id="valor_total" value="<?php echo $itens_pedido[0]->valor_total ?>" />
+		<!-- 		  	    	</form> -->
+				  	    </div>
+					    <div role="tabpanel" class="tab-pane" id="cartao">
+
+					    	<div class="row">
+					    		<div class="col-xs-12 col-sm-11 col-md-11 col-lg-11">
+					    			<h3>Pagar com cartão de crédito</h3>
+							    	<p>
+							    		Preencha o formulário abaixo, com os dados do seu cartão.
+							    	</p>
+					    		</div>
+					    		<div class="col-xs-12 col-sm-1 col-md-1 col-lg-1">
+					    			<div class="cc_brand" id="show_brand"><!-- vai fica a bandeira do cartão --></div>
+					    		</div>
+					    	</div>	
+
+					    	<div id="erros_cartao"><!-- aqui fica os erros --></div>
+					    	<div id="msg_cartao"><!-- msg cartão --></div>
+
+
+					    	<!-- <form action="" method="post" id="form_pagamento" name="form_pagamento"> -->
+					    		<div class="row">
+					    			<div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+						    			<div class="form-group">
+						    				<label>Número do cartão</label>
+						    				<input type="text" id="cc_numero" class="form-control">
+						    				<span id="cc_erro" class="erro"><!-- erro no cartão --></span>
+						    			</div>
+						    		</div>
+						    		<div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+						    			<div class="form-group">
+						    				<label>Nome no cartão</label>
+						    				<input type="text" id="cc_nome" class="form-control">
+						    			</div>
+						    		</div>
+					    		</div>
+
+					    		<div class="row">
+					    			<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+						    			<div class="form-group">
+						    				<label>Válidade mës</label>
+						    				<input type="text" id="cc_mes" class="form-control">
+						    			</div>
+						    		</div>
+						    		<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+						    			<div class="form-group">
+						    				<label>Válidade ano</label>
+						    				<input type="text" id="cc_ano" class="form-control">
+						    			</div>
+						    		</div>
+						    		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+						    			<div class="form-group">
+						    				<label>CVV</label>
+						    				<input type="text" id="cc_cvv" class="form-control">
+						    			</div>
+						    		</div>
+						    		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+						    			<div class="form-group">
+						    				<label>Parcelamento</label>
+						    				<select id="cc_parcela" class="form-control">
+						    					<option value=""></option>
+						    				</select>
+						    			</div>
+						    		</div>
+					    		</div>
+
+					    		<div class="row">
+					    			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					    				<button id="pag_cartao" class="btn btn-primary">Pagar com cartão</button>
+						    		</div>
+						    	</div>
+						    	<input type="hidden" id="cc_brand" value="">
+						    	<input type="hidden" id="total_compra" value="100.00">
+					    	</form>
+
+
+					    	<h4 class="text-center margin-top20">Aceitamos os seguintes cartões</h4>
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									<ul class="PaymentMethods" id="PaymentMethods">
+										<!-- Aqui vai carregar as bandeiras de pagamento -->
+
+									</ul>
+								</div>
+							</div>
+					    </div>
+					    <div role="tabpanel" class="tab-pane" id="boleto">
+					    	<h3>Pagar com boleto bancário</h3>
+					    	<p>
+					    		Para pagar com boleto bancário, clique no botão abaixo e aguarde a geração do boleto.
+					    	</p>  
+					    	<p>
+					    		<a href="" title="Pagar com boleto bancário" id="pag_boleto" class="ls-btn-primary">
+					    			Pagar com boleto
+					    		</a>
+					    	</p> 
+
+					    	<div id="msg_boleto"></div> 	
+					    </div>
+					    <div role="tabpanel" class="tab-pane" id="debito">
+					    	<h3>Pagar com cartão de crédito</h3>
+					    	<p>
+					    		Para pagar com débito em conta, clieque no botão abaixo.
+					    	</p> 					    	
+					    	<p>
+					    		<a href="" title="Pagar com débito online" id="pag_debito" class="btn btn-primary">
+					    			Pagar com débito online
+					    		</a>
+					    	</p> 
+					    	<div id="msg_debito"></div>  	
+					    </div>				  
+					  </div>
+
+					</div>
+					</div>
+				</div>
 			</div>
-			
-		</div>
-		
-		<input type="hidden" id="creditCardToken"  />
-		<input type="hidden" id="cc_brand"  />
-		<input type="hidden" id="cc_error"  />
-		<button type="button" id="btn_pagar">Pagar</button>
-		
+		</section>
 	</div>
-	
-	<div id="eftData" >
-		<ul>
-			<li dataBank="bancodobrasil" class="bank-flag bancodobrasil">Banco do Brasil</li>
-			<li dataBank="bradesco" class="bank-flag bradesco">Bradesco</li>
-			<li dataBank="itau" class="bank-flag itau">Itau</li>
-			<li dataBank="banrisul" class="bank-flag banrisul">Banrisul</li>
-			<li dataBank="hsbc" class="bank-flag hsbc">HSBC</li>
-		</ul>
-	</div>
-	
-	<div id="boletoData">
-		<input type="button" id="btn_pagar2" value="Gerar Pagamento"/>
-	</div>
-	
-</div>
-</div>
 </main>
 
-
-<script type="text/javascript" src="<?php echo BASE_URL;?>assets/js/checkout.js"></script>
-<script type="text/javascript" src=
-      "https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js">
-</script>
+<!-- Arquivos JS -->
+<script src="<?php echo site_url('assets/dist/jquery/jquery.js'); ?>"></script>
+<script src="<?php echo site_url('assets/dist/bootstrap/js/bootstrap.min.js'); ?>"></script>
+<script src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js"></script>
+<script src="<?php echo site_url('assets/js/getPaymentMethods.js'); ?>"></script>
+<script src="<?php echo site_url('assets/js/pagBoleto.js'); ?>"></script>
+<script src="<?php echo site_url('assets/js/pagDebito.js'); ?>"></script>
+<script src="<?php echo site_url('assets/js/pagCartao.js'); ?>"></script>

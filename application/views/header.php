@@ -9,6 +9,10 @@
     <link rel="stylesheet" type="text/css" href="//assets.locaweb.com.br/locastyle/edge/stylesheets/locastyle.css">
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('assets/css/custom.css') ?>">
     <link href="<?php echo site_url('assets/dist/css/datepicker.min.css'); ?>" rel="stylesheet" type="text/css">
+
+    <!-- Arquivos  CSS Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="<?php echo site_url('assets/dist/bootstrap/css/bootstrap.min.css'); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo site_url('assets/css/estilo.css'); ?>">
   </head>
   <body>
   <input type="hidden" id="URL" name="URL" value="<?php echo site_url() ?>">

@@ -1,17 +1,17 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Pedido_model extends CI_Model
+class Produto_model extends CI_Model
 {
     
     /**
      * @name string TABLE_NAME Holds the name of the table in use by this model
      */
-    const TABLE_NAME = 'pedido';
+    const TABLE_NAME = 'produto';
     
     /**
      * @name string PRI_INDEX Holds the name of the tables' primary index used in this model
      */
-    const PRI_INDEX = 'pedido.id';
+    const PRI_INDEX = 'produto.id';
     
     /**
      * Retrieves record(s) from the database

@@ -1,0 +1,54 @@
+/**
+ * Desenvolvido por: Clayton Eduardo Mergulhão - <contato@ismweb.com.br>
+ * Categoria: Integração com API PagSeguro Transparente
+ * Conteudo do Curso Pagseguro Transparente com PHP e Jquery JavaScript 
+ * http://cursos.ismweb.com.br/cursos/info/pagseguro-transparente-com-php-e-jquery-javascript
+ * Ano: 2016
+ */ 
+
+.PaymentMethods .icone {
+	height: 70px;
+	width: 70px;
+	border: solid 1px #C7c7c7;
+	margin: 10px;
+	list-style: none;
+	float: left;
+	padding-top: 20px
+}
+
+.tab-content { 
+	border-bottom: solid 1px #C7c7c7;
+	border-left: solid 1px #C7c7c7;
+	border-right: solid 1px #C7c7c7;
+	padding: 15px;
+}
+
+h3 {
+	margin:  0 !important;
+}
+
+.margin-top20 { 
+	margin-top: 40px;
+}
+
+.tabs-pagamentos{
+	margin-top: 20px;
+}
+
+#msg_boleto, #msg_debito {
+	margin-top: 40px;
+	margin-bottom: 40px;
+	text-align: center;
+}
+
+.cc_brand {
+	height: 70px;
+	width: 70px;
+	border: solid 1px #c7c7c7;
+	padding-top: 20px;
+	background: url(../img/cc.jpg);
+}
+
+.btn_primary {
+	color: #fff !important;
+}
